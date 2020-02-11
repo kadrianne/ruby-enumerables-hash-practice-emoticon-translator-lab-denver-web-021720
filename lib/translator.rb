@@ -4,16 +4,13 @@ require 'pry'
 
 def load_library(file)
   emoticons = YAML.load_file(file)
-  translation = {}
+  translation = {
+    "get_emoticon" => {},
+    "get_meaning" => {}
+  }
   emoticons.each do |meaning,array|
     english = array[0]
     japanese = array[1]
-    if !translation["get_emoticon"]
-      translation["get_emoticon"] = {}
-    end
-    if !translation["get_meaning"]
-      translation["get_meaning"] = {}
-    end
     translation["get_emoticon"][english] = japanese
     translation["get_meaning"][japanese] = meaning
   end
